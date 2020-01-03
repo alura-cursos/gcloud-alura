@@ -3,7 +3,7 @@ const bigQuery = new BigQuery();
 const { nomeDataset } = require('../config');
 
 const verificaDataset = async () => {
-  const [ datasets ] = await bigQuery.getDatasets();
+  const [datasets] = await bigQuery.getDatasets();
   const datasetExiste = datasets
     .filter(dataset => dataset.id === nomeDataset)
     .shift();
@@ -20,6 +20,6 @@ const verificaDataset = async () => {
   await bigQuery.createDataset(nomeDataset, config);
 
   console.log('Dataset criado com sucesso!');
-}
+};
 
 verificaDataset();

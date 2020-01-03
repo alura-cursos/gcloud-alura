@@ -1,6 +1,5 @@
 const { BigQuery } = require('@google-cloud/bigquery');
 const bigQuery = new BigQuery();
-const { nomeDataset, nomeTabela } = require('../config');
 
 const pesquisar = async query => {
   const config = {
@@ -8,10 +7,10 @@ const pesquisar = async query => {
     query
   };
 
-  const [ trabalho ] = await bigQuery
+  const [trabalho] = await bigQuery
     .createQueryJob(config);
 
-  const [ resultados ] = await trabalho
+  const [resultados] = await trabalho
     .getQueryResults();
 
   return resultados;

@@ -3,7 +3,7 @@ const bigQuery = new BigQuery();
 const { nomeDataset, nomeTabela } = require('../config');
 
 const criarTabela = async () => {
-  const [ tabelas ] = await bigQuery
+  const [tabelas] = await bigQuery
     .dataset(nomeDataset)
     .getTables();
   const tabelaExiste = tabelas
@@ -19,7 +19,7 @@ const criarTabela = async () => {
 
   const config = {
     schema: estrutura,
-    location: 'US',
+    location: 'US'
   };
 
   await bigQuery
@@ -27,6 +27,6 @@ const criarTabela = async () => {
     .createTable(nomeTabela, config);
 
   console.log('Tabela criada com sucesso!');
-}
+};
 
 criarTabela();

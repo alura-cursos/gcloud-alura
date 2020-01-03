@@ -2,7 +2,7 @@ const { BigQuery } = require('@google-cloud/bigquery');
 const bigQuery = new BigQuery();
 const { nomeDataset, nomeTabela } = require('../config');
 
-module.exports = async function pesquisar(query) {
+const pesquisar = async query => {
   const config = {
     location: 'US',
     query
@@ -15,4 +15,6 @@ module.exports = async function pesquisar(query) {
     .getQueryResults();
 
   return resultados;
-}
+};
+
+module.exports = pesquisar;

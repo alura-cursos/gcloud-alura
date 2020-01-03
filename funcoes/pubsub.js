@@ -1,8 +1,7 @@
 const { PubSub } = require('@google-cloud/pubsub');
+const pubsub = new PubSub();
 
 module.exports = (dados, topico) => {
-  const pubsub = new PubSub();
-
   if (typeof dados !== 'string') {
     dados = JSON.stringify(dados);
   }

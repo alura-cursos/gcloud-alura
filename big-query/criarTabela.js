@@ -2,7 +2,7 @@ const { BigQuery } = require('@google-cloud/bigquery');
 const bigQuery = new BigQuery();
 const { nomeDataset, nomeTabela } = require('../config');
 
-async function criarTabela() {
+const criarTabela = async () => {
   const [ tabelas ] = await bigQuery
     .dataset(nomeDataset)
     .getTables();
@@ -15,7 +15,7 @@ async function criarTabela() {
     return;
   }
 
-  const estrutura = 'nome_de_usuario:string, data_atividade:date, tipo_atividade:string, id_app:integer';
+  const estrutura = 'id_usuario:integer, data_atividade:date, tipo_atividade:string, curso:string, aula:string, texto:integer, registro_original:integer';
 
   const config = {
     schema: estrutura,

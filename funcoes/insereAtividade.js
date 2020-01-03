@@ -1,6 +1,6 @@
 const inserir = require('../big-query/inserir');
 
-module.exports = async (mensagemPubsub) => {
+const insereAtividade = async (mensagemPubsub) => {
   try {
     let atividade = mensagemPubsub.data
       ? Buffer.from(mensagemPubsub.data, 'base64').toString()
@@ -18,3 +18,5 @@ module.exports = async (mensagemPubsub) => {
     console.log(erro.response);
   }
 };
+
+module.exports = insereAtividade;

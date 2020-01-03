@@ -1,2 +1,2 @@
-exports.recebeEventos = require('./recebeEventos');
-exports.insereEventos = require('./insereEventos');
+exports.recebeAtividade = require('./recebeAtividade');
+exports.insereAtividade = require('./insereAtividade');

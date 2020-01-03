@@ -2,7 +2,7 @@ const { BigQuery } = require('@google-cloud/bigquery');
 const bigQuery = new BigQuery();
 const { nomeDataset } = require('../config');
 
-async function verificaDataset() {
+const verificaDataset = async () => {
   const [ datasets ] = await bigQuery.getDatasets();
   const datasetExiste = datasets
     .filter(dataset => dataset.id === nomeDataset)

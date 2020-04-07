@@ -6,6 +6,7 @@ tmp
 
 # Google
 keyfile.json
+autenticacao.json
 
 # Logs
 *.log

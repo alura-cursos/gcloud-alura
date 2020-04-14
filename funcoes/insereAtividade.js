@@ -5,9 +5,11 @@ module.exports = async function insereAtividade (evento) {
         const atividadeCodificada = evento.data
         const json = Buffer.from(atividadeCodificada, 'base64').toString()
         const atividade = JSON.parse(json)
+
         const resultados = await inserir(atividade)
+        console.log(resultados)
     } catch (erro) {
         console.error(erro)
-        console.log(erro.response)
+        console.log(JSON.stringify(erro.response))
     }
 }

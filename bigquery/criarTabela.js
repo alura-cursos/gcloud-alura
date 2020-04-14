@@ -2,50 +2,53 @@ const BigQuery = require('@google-cloud/bigquery').BigQuery
 const instancia = new BigQuery()
 
 async function criarTabela () {
+    const dataset = instancia.dataset('forumAlura')
+    const [tabelas] = await dataset.getTables()
     const nomeTabela = 'atividades'
-    const [tabelas] = await instancia.dataset('forumAlura').getTables()
     const tabelasEncontradas = tabelas.filter(function (tabelaAtual) {
         return tabelaAtual.id === nomeTabela
     })
 
     if (tabelasEncontradas.length > 0) {
-        console.log('Esta tabela já existe!')
+        console.log('Essa tabela já existe!')
         return
     }
 
     const estrutura = [
         {
-            name: 'id',
-            type: 'integer'
-        },
-        {
             name: 'data_criacao_atividade',
-            type: 'timestamp'
+            type: 'timestamp',
+            mode: 'required'
         },
         {
-            name: 'tipo_atividade',
-            type: 'string'
+            name: 'tipo_de_atividade',
+            type: 'string',
+            mode: 'required'
         },
         {
             name: 'nome_do_curso',
-            type: 'string'
+            type: 'string',
+            mode: 'required'
         },
         {
             name: 'nome_da_aula',
-            type: 'string'
+            type: 'string',
+            mode: 'required'
         },
         {
             name: 'texto',
-            type: 'string'
+            type: 'string',
+            mode: 'required'
         },
         {
             name: 'id_atividade_principal',
-            type: 'integer'
+            type: 'integer',
+            mode: 'nullable'
         }
     ]
 
-    await instancia.dataset('forumAlura').createTable(nomeTabela, { schema: estrutura })
-    console.log('Tabela criada com sucesso!')
+    await dataset.createTable(nomeTabela, { schema: estrutura })
+    console.log('A tabela foi criada com sucesso!')
 }
 
 criarTabela()

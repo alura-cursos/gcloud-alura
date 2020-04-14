@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@google-cloud/bigquery": "^4.7.0",
-    "@google-cloud/pubsub": "^1.7.1"
+    "@google-cloud/pubsub": "^1.7.1",
+    "koa": "^2.11.0"
   }
 }

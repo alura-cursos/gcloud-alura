@@ -28,6 +28,12 @@ functions:
     handler: recebeAtividade
     events:
       - http: path
+  insereAtividade:
+    handler: insereAtividade
+    events:
+      - event:
+          eventType: providers/cloud.pubsub/eventTypes/topic.publish
+          resource: projects/${self:provider.project}/topics/atividades
   # NOTE: the following uses an "event" event (pubSub event in this case).
   # Please create the corresponding resources in the Google Cloud
   # before deploying this service through Serverless

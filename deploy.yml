@@ -22,5 +22,16 @@ spec:
         name: forum-alura
         ports:
         - containerPort: 3000
+        env:
+        - name: USUARIO
+          valueFrom:
+            secretKeyRef:
+              name: segredos-api
+              key: USUARIO
+        - name: SENHA
+          valueFrom:
+            secretKeyRef:
+              name: segredos-api
+              key: SENHA
         resources: {}
 status: {}
